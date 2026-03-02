@@ -22,7 +22,7 @@ export default function About() {
               />
             </div>
             {/* Decorative element */}
-            <div className="absolute -bottom-6 -right-6 w-24 h-24 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-10">
+            <div className="absolute -bottom-6 right-0 md:-right-6 w-24 h-24 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-lg z-10">
               {t.about.years}
             </div>
           </div>
