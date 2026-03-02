@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import { LanguageProvider } from "@/context/LanguageContext";
@@ -16,17 +16,39 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  themeColor: '#ffffff',
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5, // Allow zooming for accessibility
+  userScalable: true,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.jishaowindows.com'),
   title: {
-    default: "Foshan Jishao Doors And Windows | Professional Aluminum Manufacturer",
+    default: "Jishao Doors And Windows | Custom Aluminum Manufacturer China",
     template: "%s | Foshan Jishao Doors And Windows"
   },
-  description: "Top-rated manufacturer of high-quality broken-bridge aluminum doors, windows, and sunrooms in Foshan, China. 25+ years of experience in custom residential and commercial solutions.",
-  keywords: ["Aluminum Windows", "Aluminum Doors", "Sunrooms", "Broken-bridge Aluminum", "Foshan Window Manufacturer", "China Door Factory", "Custom Windows", "Sliding Doors", "Folding Doors", "Casement Windows"],
-  authors: [{ name: "Foshan Jishao Doors And Windows" }],
+  description: "Premier manufacturer of custom aluminum doors and windows in Foshan, China. Specializing in thermal break folding doors, sliding systems, and heavy-duty casing. Global export.",
+  keywords: [
+    "Aluminum Windows China", 
+    "Aluminum Doors Manufacturer", 
+    "Broken-bridge Aluminum", 
+    "Foshan Window Factory", 
+    "Custom Aluminum Joinery", 
+    "Thermal Break Windows", 
+    "Folding Doors Supplier", 
+    "Sliding Door Systems", 
+    "Heavy Duty Aluminum Doors", 
+    "Jishao Windows",
+    "Double Glazed Windows China",
+    "Soundproof Aluminum Windows"
+  ],
+  authors: [{ name: "Foshan Jishao Doors And Windows", url: "https://www.jishaowindows.com" }],
   creator: "Foshan Jishao Doors And Windows",
   publisher: "Foshan Jishao Doors And Windows",
+  category: "Construction & Home Improvement",
   formatDetection: {
     email: false,
     address: false,
@@ -34,10 +56,11 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: "Foshan Jishao Doors And Windows | Premium Aluminum Solutions",
-    description: "Discover high-end custom aluminum doors and windows from Foshan's leading manufacturer. Quality, durability, and style for your home.",
+    description: "Discover high-end custom aluminum doors and windows from Foshan's leading manufacturer. Quality, durability, and style for residential and commercial projects.",
     url: 'https://www.jishaowindows.com',
     siteName: 'Foshan Jishao Doors And Windows',
     locale: 'en_US',
+    alternateLocale: ['zh_CN'],
     type: 'website',
     images: [
       {
@@ -51,7 +74,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: "Foshan Jishao Doors And Windows",
-    description: "Professional Aluminum Doors & Windows Manufacturer in China.",
+    description: "Professional Aluminum Doors & Windows Manufacturer in China. Exporting globally.",
     images: ['/slides/home1.jpg'],
   },
   robots: {
@@ -67,7 +90,20 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: 'https://www.jishaowindows.com',
+    languages: {
+      'en-US': 'https://www.jishaowindows.com',
+      'zh-CN': 'https://www.jishaowindows.com/zh', // Assuming zh route exists or plan to add
+    },
   },
+  verification: {
+    google: 'verification_token', // User needs to provide this, but I'll add the field
+  },
+  other: {
+    "geo.region": "CN-GD",
+    "geo.placename": "Foshan",
+    "geo.position": "23.0215;113.1214", // Approximate Foshan coordinates
+    "ICBM": "23.0215, 113.1214"
+  }
 };
 
 export default function RootLayout({

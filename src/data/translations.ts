@@ -66,6 +66,7 @@ export const translations = {
       years: "25+ Years",
     },
     features: {
+      title: "Core Product Features",
       items: [
         {
           title: "Waterproof & Airtight",
@@ -191,6 +192,7 @@ export const translations = {
       years: "25+ 年",
     },
     features: {
+      title: "核心产品优势",
       items: [
         {
           title: "防水气密系统",

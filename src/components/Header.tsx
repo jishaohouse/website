@@ -48,7 +48,7 @@ export default function Header() {
           <LanguageSwitcher />
           
           <a 
-            href="https://wa.me/8613553338986" 
+            href="https://wa.me/8613539314842" 
             target="_blank" 
             rel="noopener noreferrer"
             className="hidden sm:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors"

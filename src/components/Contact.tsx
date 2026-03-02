@@ -105,8 +105,8 @@ export default function Contact() {
                   <MessageCircle className="w-6 h-6 text-slate-900" />
                 </div>
                 <h3 className="font-bold text-slate-900 mb-1">{t.contact.whatsapp}</h3>
-                <a href="https://wa.me/8613553338986" className="text-green-600 font-medium hover:underline">
-                  +86 135 5333 8986
+                <a href="https://wa.me/8613539314842" className="text-green-600 font-medium hover:underline">
+                  +86 135 3931 4842
                 </a>
               </div>
 

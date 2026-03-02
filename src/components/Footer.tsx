@@ -22,7 +22,7 @@ export default function Footer() {
               <a href="https://www.facebook.com/profile.php?id=61581689489765" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-600 transition-colors text-white">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://wa.me/8613553338986" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-600 transition-colors text-white">
+              <a href="https://wa.me/8613539314842" className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-green-600 transition-colors text-white">
                 <MessageCircle className="w-5 h-5" />
               </a>
             </div>

@@ -70,9 +70,15 @@ export default function Hero() {
             <div className={`w-full max-w-none transition-all duration-1000 transform ${
               index === currentSlide ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             }`}>
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
-                {slide.title}
-              </h1>
+              {index === 0 ? (
+                <h1 className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+                  {slide.title}
+                </h1>
+              ) : (
+                <div className="text-5xl md:text-7xl font-bold text-white mb-8 leading-tight tracking-tight">
+                  {slide.title}
+                </div>
+              )}
               
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link 

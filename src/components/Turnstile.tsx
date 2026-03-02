@@ -2,6 +2,8 @@
 
 import { useEffect, useRef } from "react";
 
+import Script from "next/script";
+
 interface TurnstileProps {
   siteKey: string;
   onVerify: (token: string) => void;
@@ -39,6 +41,9 @@ export default function Turnstile({ siteKey, onVerify, onError, onExpire }: Turn
     const renderWidget = () => {
       if (!containerRef.current || !window.turnstile) return;
 
+      // Check if widget is already rendered to avoid duplicates
+      if (widgetId.current) return;
+
       widgetId.current = window.turnstile.render(containerRef.current, {
         sitekey: siteKey,
         callback: (token: string) => onVerify(token),
@@ -47,37 +52,31 @@ export default function Turnstile({ siteKey, onVerify, onError, onExpire }: Turn
       });
     };
 
-    // Define the callback function globally so the script can call it
-    window.onTurnstileLoad = () => {
-      if (containerRef.current && !widgetId.current) {
-        renderWidget();
-      }
-    };
-
     // If script is already loaded and turnstile object exists
     if (window.turnstile && containerRef.current && !widgetId.current) {
       renderWidget();
     }
+
+    // Define the global callback for the script
+    window.onTurnstileLoad = () => {
+       renderWidget();
+    };
 
     return () => {
       if (widgetId.current && window.turnstile) {
         window.turnstile.remove(widgetId.current);
         widgetId.current = null;
       }
-      // Clean up global callback? Maybe not strictly necessary but good practice if we want to be clean.
-      // But multiple components might use it? Assuming singleton usage or okay to overwrite.
-      // window.onTurnstileLoad = undefined; 
     };
   }, [siteKey, onVerify, onError, onExpire]);
 
   return (
     <>
-      <script 
-        src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad" 
-        async 
-        defer
-      ></script>
-      <div ref={containerRef} className="my-4" />
+      <Script 
+        src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileLoad"
+        strategy="lazyOnload"
+      />
+      <div ref={containerRef} className="my-4 min-h-[65px]" />
     </>
   );
 }
