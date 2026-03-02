@@ -59,7 +59,8 @@ export default function Hero() {
               alt={slide.alt}
               fill
               className="object-cover"
-              priority={index === 0}
+              priority={true} // Prioritize all hero images to prevent LCP delay
+              sizes="100vw"
             />
             {/* Overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-slate-900/80 to-slate-900/30" />
