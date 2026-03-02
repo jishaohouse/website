@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -8,6 +8,26 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Factory() {
   const { t } = useLanguage();
   const [startIndex, setStartIndex] = useState(0);
+  const [itemsToShow, setItemsToShow] = useState(4);
+
+  // Update itemsToShow based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsToShow(1);
+      } else if (window.innerWidth < 1024) {
+        setItemsToShow(2);
+      } else {
+        setItemsToShow(4);
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Use existing images as factory images for now
   const factoryImages = [
@@ -18,8 +38,7 @@ export default function Factory() {
     { src: "/factory/5.webp", alt: "Finished Aluminum Doors and Windows Warehouse" }
   ];
 
-  const itemsToShow = 4;
-  const maxIndex = factoryImages.length - itemsToShow;
+  const maxIndex = Math.max(0, factoryImages.length - itemsToShow);
 
   const nextSlide = () => {
     setStartIndex((prev) => Math.min(prev + 1, maxIndex));
@@ -54,7 +73,7 @@ export default function Factory() {
                 {factoryImages.map((img, index) => (
                   <div 
                     key={index} 
-                    className="flex-shrink-0 w-full md:w-[calc(25%-12px)] relative group"
+                    className="flex-shrink-0 w-full md:w-[calc(50%-8px)] lg:w-[calc(25%-12px)] relative group"
                   >
                     <div className="relative aspect-square overflow-hidden bg-slate-200">
                       <Image

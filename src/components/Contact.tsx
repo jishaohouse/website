@@ -74,62 +74,70 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-white">
+    <section id="contact" className="py-12 md:py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col lg:flex-row gap-12 lg:gap-20">
+        <div className="flex flex-col lg:flex-row gap-8 lg:gap-20">
           
           {/* Left Content - Contact Info */}
           <div className="lg:w-5/12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4 md:mb-6">
               {t.contact.title}
             </h2>
-            <p className="text-slate-600 mb-12 leading-relaxed">
+            <p className="text-slate-600 mb-8 md:mb-12 leading-relaxed">
               {t.contact.subtitle}
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8">
               {/* Phone */}
-              <div>
-                <div className="mb-2">
-                  <Phone className="w-6 h-6 text-slate-900" />
+              <div className="flex md:block items-center md:items-start gap-4 md:gap-0">
+                <div className="md:mb-2 shrink-0">
+                  <Phone className="w-5 h-5 md:w-6 md:h-6 text-slate-900" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{t.contact.phone}</h3>
-                <a href="tel:+8613553338986" className="text-green-600 font-medium hover:underline">
-                  +86 135 5333 8986
-                </a>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-0.5 md:mb-1 text-sm md:text-base">{t.contact.phone}</h3>
+                  <a href="tel:+8613553338986" className="text-green-600 font-medium hover:underline text-sm md:text-base block">
+                    +86 135 5333 8986
+                  </a>
+                </div>
               </div>
 
               {/* Whatsapp */}
-              <div>
-                <div className="mb-2">
-                  <MessageCircle className="w-6 h-6 text-slate-900" />
+              <div className="flex md:block items-center md:items-start gap-4 md:gap-0">
+                <div className="md:mb-2 shrink-0">
+                  <MessageCircle className="w-5 h-5 md:w-6 md:h-6 text-slate-900" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{t.contact.whatsapp}</h3>
-                <a href="https://wa.me/8613539314842" className="text-green-600 font-medium hover:underline">
-                  +86 135 3931 4842
-                </a>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-0.5 md:mb-1 text-sm md:text-base">{t.contact.whatsapp}</h3>
+                  <a href="https://wa.me/8613539314842" className="text-green-600 font-medium hover:underline text-sm md:text-base block">
+                    +86 135 3931 4842
+                  </a>
+                </div>
               </div>
 
               {/* Email */}
-              <div>
-                <div className="mb-2">
-                  <Mail className="w-6 h-6 text-slate-900" />
+              <div className="flex md:block items-center md:items-start gap-4 md:gap-0">
+                <div className="md:mb-2 shrink-0">
+                  <Mail className="w-5 h-5 md:w-6 md:h-6 text-slate-900" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{t.contact.email}</h3>
-                <a href="mailto:zengkaoyuanfs@gmail.com" className="text-green-600 font-medium hover:underline break-all">
-                  zengkaoyuanfs@gmail.com
-                </a>
+                <div className="min-w-0">
+                  <h3 className="font-bold text-slate-900 mb-0.5 md:mb-1 text-sm md:text-base">{t.contact.email}</h3>
+                  <a href="mailto:zengkaoyuanfs@gmail.com" className="text-green-600 font-medium hover:underline text-sm md:text-base block truncate">
+                    zengkaoyuanfs@gmail.com
+                  </a>
+                </div>
               </div>
 
               {/* Address */}
-              <div>
-                <div className="mb-2">
-                  <MapPin className="w-6 h-6 text-slate-900" />
+              <div className="flex md:block items-start gap-4 md:gap-0">
+                <div className="md:mb-2 shrink-0 pt-1 md:pt-0">
+                  <MapPin className="w-5 h-5 md:w-6 md:h-6 text-slate-900" />
                 </div>
-                <h3 className="font-bold text-slate-900 mb-1">{t.contact.address}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">
-                  {t.contact.addressValue}
-                </p>
+                <div>
+                  <h3 className="font-bold text-slate-900 mb-0.5 md:mb-1 text-sm md:text-base">{t.contact.address}</h3>
+                  <p className="text-slate-600 text-xs md:text-sm leading-relaxed">
+                    {t.contact.addressValue}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
