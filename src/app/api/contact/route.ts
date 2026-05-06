@@ -27,6 +27,7 @@ export async function POST(request: Request) {
     const outcome = await result.json();
 
     if (!outcome.success) {
+      console.error('Turnstile verification failed:', outcome);
       return NextResponse.json(
         { success: false, message: 'Invalid Turnstile token' },
         { status: 400 }

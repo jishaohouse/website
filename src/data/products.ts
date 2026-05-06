@@ -1,6 +1,7 @@
 export interface Product {
   id: string;
   image: string;
+  images?: string[];
   name: {
     en: string;
     zh: string;
@@ -26,7 +27,8 @@ export interface Product {
 export const products: Product[] = [
   {
     id: '55',
-    image: '/products/55.jpg',
+    image: '/products/55-2.jpg',
+    images: ['/products/55.jpg', '/products/55-2.jpg'],
     name: {
       en: '55 Vertical Folding Window',
       zh: '55 上下折叠窗'
@@ -88,7 +90,8 @@ export const products: Product[] = [
   },
   {
     id: '65',
-    image: '/products/65.jpg',
+    image: '/products/65-2.jpg',
+    images: ['/products/65.jpg', '/products/65-2.jpg'],
     name: {
       en: '65 Series Thermal Break Outward Opening Double Door',
       zh: '65 系列断桥外开对开门'
@@ -166,7 +169,8 @@ export const products: Product[] = [
   },
   {
     id: '75',
-    image: '/products/75.jpg',
+    image: '/products/80-2.jpg',
+    images: ['/products/75.jpg','/products/80.jpg', '/products/80-2.jpg'],
     name: {
       en: '75-80 Series Thermal Break Folding Door',
       zh: '75-80 系列断桥折叠门'
@@ -204,7 +208,8 @@ export const products: Product[] = [
   },
   {
     id: '82',
-    image: '/products/82.jpg',
+    image: '/products/82-2.jpg',
+    images: ['/products/82.jpg', '/products/82-2.jpg'],
     name: {
       en: '82 Series Broken Bridge Double Internal Windows',
       zh: '82 系列断桥双内开窗'
@@ -290,7 +295,8 @@ export const products: Product[] = [
   },
   {
     id: '85',
-    image: '/products/85.jpg',
+    image: '/products/85-2.jpg',
+    images: ['/products/85.jpg', '/products/85-2.jpg'],
     name: {
       en: '85 Series Non-Thermal Break Double Hung Window',
       zh: '85 系列非断桥双提拉窗'
@@ -348,7 +354,8 @@ export const products: Product[] = [
   },
   {
     id: '110',
-    image: '/products/110.jpg',
+    image: '/products/110-2.jpg',
+    images: ['/products/110.jpg', '/products/110-2.jpg'],
     name: {
       en: '110 Series Broken Bridge Window Screen Integrated External Opening Window',
       zh: '110 系列断桥窗纱一体外开窗'
@@ -434,7 +441,8 @@ export const products: Product[] = [
   },
   {
     id: '120',
-    image: '/products/120.jpg',
+    image: '/products/120-2.jpg',
+    images: ['/products/120.jpg', '/products/120-2.jpg'],
     name: {
       en: '120 Three Track Broken Bridge Sliding Window',
       zh: '120 三轨断桥推拉窗'
@@ -516,7 +524,8 @@ export const products: Product[] = [
   },
   {
     id: '150',
-    image: '/products/150.jpg',
+    image: '/products/150-2.jpg',
+    images: ['/products/150.jpg', '/products/150-2.jpg'],
     name: {
       en: '150 Series Two Track Two Leaf Sliding Door',
       zh: '150 系列两轨两扇推拉门'
@@ -555,7 +564,8 @@ export const products: Product[] = [
   },
   {
     id: '225',
-    image: '/products/225.jpg',
+    image: '/products/150-2.jpg',
+    images: ['/products/225.jpg', '/products/150-2.jpg'],
     name: {
       en: '225 Series Three Track Three Leaf Sliding Door',
       zh: '225 系列三轨三扇推拉门'
@@ -594,7 +604,8 @@ export const products: Product[] = [
   },
   {
     id: '130',
-    image: '/products/130.jpg',
+    image: '/products/130-2.jpg',
+    images: ['/products/130.jpg', '/products/130-2.jpg'],
     name: {
       en: '130 Six Track Panoramic Sliding Window',
       zh: '130 六轨全景推拉窗'
@@ -642,7 +653,8 @@ export const products: Product[] = [
   },
   {
     id: '4065',
-    image: '/products/4065.jpg',
+    image: '/products/4065-2.jpg',
+    images: ['/products/4065.jpg', '/products/4065-2.jpg'],
     name: {
       en: '40*65 Three Track Sliding Door Series',
       zh: '40*65 三轨推拉门系列'
@@ -690,7 +702,8 @@ export const products: Product[] = [
   },
   {
     id: 'sd',
-    image: '/products/sd.jpg',
+    image: '/products/sd-2.jpg',
+    images: ['/products/sd.jpg', '/products/sd-2.jpg'],
     name: {
       en: 'Panoramic Heavy-Duty Sliding Door Series',
       zh: '全景重型推拉门系列'

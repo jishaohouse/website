@@ -38,18 +38,35 @@ export default function Turnstile({ siteKey, onVerify, onError, onExpire }: Turn
   const widgetId = useRef<string | null>(null);
 
   useEffect(() => {
+    if (!siteKey) {
+      console.error('Turnstile siteKey is missing');
+      return;
+    }
+
     const renderWidget = () => {
       if (!containerRef.current || !window.turnstile) return;
+
+      if (!siteKey || siteKey.trim() === '') {
+        console.warn('Turnstile: siteKey is empty. The widget will not render correctly.');
+        return;
+      }
 
       // Check if widget is already rendered to avoid duplicates
       if (widgetId.current) return;
 
-      widgetId.current = window.turnstile.render(containerRef.current, {
-        sitekey: siteKey,
-        callback: (token: string) => onVerify(token),
-        "error-callback": () => onError?.(),
-        "expired-callback": () => onExpire?.(),
-      });
+      try {
+        widgetId.current = window.turnstile.render(containerRef.current, {
+          sitekey: siteKey,
+          callback: (token: string) => onVerify(token),
+          "error-callback": () => {
+             console.error('Turnstile widget error: Check if the siteKey is valid and the domain is allowed.');
+             onError?.();
+          },
+          "expired-callback": () => onExpire?.(),
+        });
+      } catch (error) {
+        console.error('Error rendering Turnstile widget:', error);
+      }
     };
 
     // If script is already loaded and turnstile object exists

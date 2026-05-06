@@ -214,7 +214,7 @@ export default function Contact() {
                   </div>
 
                   <Turnstile 
-                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '0x4AAAAAACZut7zLv66aZWTk'} 
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || ''} 
                     onVerify={(token) => {
                       setToken(token);
                       setErrorMessage('');

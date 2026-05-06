@@ -9,6 +9,17 @@ import { products, Product } from "@/data/products";
 export default function Products() {
   const { t, language } = useLanguage();
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [activeImage, setActiveImage] = useState<string | null>(null);
+
+  const handleOpenModal = (product: Product) => {
+    setSelectedProduct(product);
+    setActiveImage(product.image);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProduct(null);
+    setActiveImage(null);
+  };
 
   return (
     <section id="products" className="py-20 bg-slate-50">
@@ -25,14 +36,14 @@ export default function Products() {
             <div 
               key={product.id} 
               className="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden flex flex-col"
-              onClick={() => setSelectedProduct(product)}
+              onClick={() => handleOpenModal(product)}
             >
-              <div className="relative aspect-[4/3] bg-white overflow-hidden">
+              <div className="relative aspect-[4/3] bg-slate-100 overflow-hidden">
                 <Image
                   src={product.image}
                   alt={product.name[language]}
                   fill
-                  className="object-contain p-4 transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
               </div>
@@ -49,30 +60,54 @@ export default function Products() {
       {/* Product Detail Modal */}
       {selectedProduct && (
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm transition-opacity duration-300"
-          onClick={() => setSelectedProduct(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-2 md:p-4 backdrop-blur-md transition-opacity duration-300"
+          onClick={handleCloseModal}
         >
           <div 
-            className="relative w-full max-w-3xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300"
+            className="relative w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[95vh] animate-in fade-in zoom-in duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             <button 
-              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
-              onClick={() => setSelectedProduct(null)}
+              className="absolute top-4 right-4 z-20 p-2 bg-black/50 hover:bg-black/70 text-white rounded-full transition-colors"
+              onClick={handleCloseModal}
             >
-              <X size={20} />
+              <X size={24} />
             </button>
 
             {/* Image Section */}
-            <div className="relative w-full h-80 sm:h-[500px] bg-white flex-shrink-0">
-              <Image
-                src={selectedProduct.image}
-                alt={selectedProduct.name[language]}
-                fill
-                className="object-contain"
-                sizes="(max-width: 768px) 100vw, 800px"
-                priority
-              />
+            <div className="flex flex-col flex-shrink-0">
+              <div className="relative w-full h-[40vh] sm:h-[60vh] md:h-[650px] bg-slate-50">
+                <Image
+                  src={activeImage || selectedProduct.image}
+                  alt={selectedProduct.name[language]}
+                  fill
+                  className="object-contain p-2 md:p-6"
+                  sizes="(max-width: 1024px) 100vw, 1200px"
+                  priority
+                />
+              </div>
+              
+              {/* Thumbnails */}
+              {selectedProduct.images && selectedProduct.images.length > 1 && (
+                <div className="flex gap-2 p-4 bg-slate-50 border-b border-slate-100 overflow-x-auto justify-center">
+                  {selectedProduct.images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setActiveImage(img)}
+                      className={`relative w-16 h-16 rounded-md overflow-hidden border-2 transition-all ${
+                        activeImage === img ? 'border-blue-600 ring-2 ring-blue-100' : 'border-transparent opacity-70 hover:opacity-100'
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt={`${selectedProduct.name[language]} - ${idx + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* Content Section */}
